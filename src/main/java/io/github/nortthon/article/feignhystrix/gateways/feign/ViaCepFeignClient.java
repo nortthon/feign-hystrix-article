@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "viacep", url = "${feign.viacep.url}", configuration = ViaCepFeignConfiguration.class)
 public interface ViaCepFeignClient {
 
-  @GetMapping("/ws/{cep}/json")
-  AddressContract findCEP(@PathVariable String cep);
+	@GetMapping("/ws/{cep}/json")
+	AddressContract findCEP(@PathVariable String cep);
 
-  class ViaCepFeignConfiguration {
+	class ViaCepFeignConfiguration {
 
-    @Bean
-    public Decoder decode() {
-      return new JacksonDecoder();
-    }
-  }
+		@Bean
+		public Decoder decode() {
+			return new JacksonDecoder();
+		}
+
+	}
+
 }
